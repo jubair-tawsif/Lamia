@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>একটি অমর প্রেমের চিঠি 🕊️💌</title>
+  
+  <!-- বাংলা ও রাজকীয় ফন্ট -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Hind+Siliguri:wght@400;600;700&family=Noto+Serif+Bengali:wght@400;600;700&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold-primary: #e6b800;
+      --gold-light: #fff2a3;
+      --gold-dark: #8c6d00;
+      --wax-red: #a81c24;
+      --parchment-bg: #fdfaf3;
+      --text-color: #2b1f14;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: #04050a;
+      color: #fff;
+      font-family: 'Hind Siliguri', sans-serif;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      perspective: 1200px;
+    }
+
+    /* Interactive Magical Canvas */
+    #fxCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* Ambient Background Atmosphere */
+    .sky-aura {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: radial-gradient(circle at 50% 50%, #151833 0%, #05060e 100%);
+      transition: background 3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Audio Controller Pill */
+    .music-pill {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(15, 15, 30, 0.75);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-light);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 0 20px rgba(230, 184, 0, 0.3);
+      transition: all 0.3s;
+    }
+
+    .music-pill:hover {
+      transform: scale(1.05);
+      background: rgba(35, 35, 60, 0.9);
+    }
+
+    /* Scene Transitions Framework */
+    .scene-view {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.94);
+      transition: opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1), transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .scene-view.current {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+
+    /* =======================================================
+       SCENE 1: THE CAGED SANCTUARY
+    ======================================================= */
+    .cinematic-badge {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      color: var(--gold-primary);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      text-shadow: 0 0 10px rgba(230, 184, 0, 0.6);
+      animation: pulseGlow 2s infinite alternate;
+    }
+
+    .story-prompt {
+      text-align: center;
+      margin-bottom: 25px;
+      background: rgba(15, 15, 25, 0.65);
+      padding: 16px 36px;
+      border-radius: 40px;
+      border: 1px solid rgba(230, 184, 0, 0.4);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(230, 184, 0, 0.25);
+      cursor: pointer;
+      animation: floatPrompt 3s infinite ease-in-out;
+    }
+
+    .story-prompt h2 {
+      font-size: 1.4rem;
+      color: #fff;
+      font-family: 'Noto Serif Bengali', serif;
+      margin-bottom: 4px;
+    }
+
+    .story-prompt p {
+      font-size: 0.95rem;
+      color: var(--gold-light);
+    }
+
+    @keyframes floatPrompt {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    @keyframes pulseGlow {
+      from { opacity: 0.7; filter: drop-shadow(0 0 2px var(--gold-primary)); }
+      to { opacity: 1; filter: drop-shadow(0 0 12px var(--gold-primary)); }
+    }
+
+    .cage-enclosure {
+      position: relative;
+      width: 260px;
+      height: 350px;
+      cursor: pointer;
+    }
+
+    .cage-model {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 20px rgba(230, 184, 0, 0.3));
+    }
+
+    .cage-door-hinge {
+      transform-origin: 35px 180px;
+      transition: transform 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .cage-door-hinge.unlocked {
+      transform: rotateY(-110deg);
+    }
+
+    .captive-pigeon {
+      position: absolute;
+      top: 140px;
+      left: 70px;
+      width: 120px;
+      transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .pigeon-idle-wing {
+      animation: subtleWing 1.6s infinite ease-in-out alternate;
+      transform-origin: 45px 30px;
+    }
+
+    @keyframes subtleWing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-15deg); }
+    }
+
+    /* =======================================================
+       SCENE 2: EXTENDED SKY JOURNEY (CINEMATIC FLIGHT)
+    ======================================================= */
+    #scene-2 {
+      overflow: hidden;
+    }
+
+    .flight-status-box {
+      position: absolute;
+      top: 10%;
+      text-align: center;
+      font-family: 'Noto Serif Bengali', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      text-shadow: 0 0 25px rgba(255, 242, 163, 0.9);
+      animation: flightTextPulse 2s infinite alternate;
+      z-index: 30;
+    }
+
+    @keyframes flightTextPulse {
+      0% { opacity: 0.85; transform: scale(0.98); }
+      100% { opacity: 1; transform: scale(1.02); text-shadow: 0 0 35px #ffeaa7; }
+    }
+
+    /* Parallax Floating Clouds */
+    .cloud-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 250vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .cloud-svg {
+      position: absolute;
+      fill: rgba(255, 255, 255, 0.15);
+      filter: blur(15px);
+      animation: cloudDrift 20s linear infinite;
+    }
+
+    .cloud-svg.c1 { top: 20%; width: 400px; animation-duration: 18s; }
+    .cloud-svg.c2 { top: 55%; width: 550px; animation-duration: 25s; animation-delay: -5s; }
+    .cloud-svg.c3 { top: 75%; width: 350px; animation-duration: 15s; animation-delay: -10s; }
+
+    @keyframes cloudDrift {
+      0% { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* The Soaring Pigeon with Elaborate 7-Second Flight Path */
+    .majestic-flying-dove {
+      position: absolute;
+      width: 200px;
+      height: 160px;
+      z-index: 20;
+      animation: majesticFlightPath 7.5s cubic-bezier(0.35, 0, 0.25, 1) forwards;
+    }
+
+    .dove-wing-rapid {
+      animation: flapWingsRapid 0.18s infinite alternate ease-in-out;
+      transform-origin: 60px 45px;
+    }
+
+    @keyframes flapWingsRapid {
+      0% { transform: rotate(-45deg) scaleY(0.7); }
+      100% { transform: rotate(35deg) scaleY(1.25); }
+    }
+
+    /* Complex, Real-life Multi-curve Flight Path */
+    @keyframes majesticFlightPath {
+      0% {
+        top: 85%;
+        left: -15%;
+        transform: scale(0.4) rotate(25deg);
+      }
+      20% {
+        top: 25%;
+        left: 25%;
+        transform: scale(0.9) rotate(-10deg);
+      }
+      45% {
+        top: 45%;
+        left: 70%;
+        transform: scale(1.1) rotate(15deg);
+      }
+      65% {
+        top: 20%;
+        left: 45%;
+        transform: scale(1.5) rotate(-8deg);
+      }
+      80% {
+        top: 48%;
+        left: 50%;
+        transform: scale(2.2) translate(-50%, -50%) rotate(0deg);
+      }
+      90% {
+        top: 48%;
+        left: 50%;
+        transform: scale(2.2) translate(-50%, -50%) rotate(-5deg);
+      }
+      100% {
+        top: -40%;
+        left: 120%;
+        transform: scale(0.3) rotate(-35deg);
+      }
+    }
+
+    /* Airdrop Letter Physics */
+    .airdrop-letter-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 110px;
+      height: 75px;
+      transform: translate(-50%, -50%) scale(0) rotate(-40deg);
+      opacity: 0;
+      z-index: 25;
+      filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 30px rgba(230, 184, 0, 0.7));
+      transition: all 2.2s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .airdrop-letter-box.released {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(2.4) rotate(10deg);
+    }
+
+    /* =======================================================
+       SCENE 3: 3D WAX SEAL ENVELOPE INTERACTION
+    ======================================================= */
+    .envelope-3d-stage {
+      perspective: 1000px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .royal-envelope {
+      width: 320px;
+      height: 210px;
+      background: linear-gradient(135deg, #d8ad58 0%, #b88628 100%);
+      border-radius: 12px;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(230, 184, 0, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.8s, opacity 0.8s;
+      border: 2px solid var(--gold-light);
+    }
+
+    .royal-wax-seal {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #c0292b 0%, #7a0c10 100%);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      border: 4px dashed #ff999b;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.7), inset 0 0 10px rgba(0, 0, 0, 0.5);
+      animation: waxHeartbeat 1.8s infinite;
+      z-index: 10;
+    }
+
+    @keyframes waxHeartbeat {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(192, 41, 43, 0.5); }
+      50% { transform: scale(1.1); box-shadow: 0 0 40px rgba(255, 77, 109, 0.85); }
+    }
+
+    .envelope-label {
+      position: absolute;
+      bottom: 18px;
+      color: #2b1f14;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* =======================================================
+       SCENE 4: THE GRAND ROYAL PARCHMENT LETTER
+    ======================================================= */
+    #scene-4 {
+      overflow-y: auto;
+      padding: 40px 15px 80px 15px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .parchment-scroll {
+      width: 100%;
+      max-width: 740px;
+      background: var(--parchment-bg);
+      background-image: radial-gradient(#d6c29b 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--text-color);
+      border-radius: 16px;
+      padding: 50px 42px;
+      border: 8px double var(--gold-dark);
+      box-shadow: 0 35px 80px rgba(0, 0, 0, 0.95), 0 0 60px rgba(212, 175, 55, 0.35);
+      position: relative;
+      margin: auto;
+      transform: rotateX(25deg) scale(0.85);
+      opacity: 0;
+      transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .parchment-scroll.opened {
+      transform: rotateX(0deg) scale(1);
+      opacity: 1;
+    }
+
+    .vintage-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18rem;
+      color: rgba(184, 134, 40, 0.04);
+      pointer-events: none;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .scroll-heading {
+      text-align: center;
+      border-bottom: 2px dashed #b88628;
+      padding-bottom: 22px;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .scroll-heading h1 {
+      font-family: 'Noto Serif Bengali', serif;
+      font-size: 2.3rem;
+      color: #6b0f1a;
+      font-weight: 700;
+    }
+
+    .scroll-heading .sub-ornament {
+      font-size: 0.95rem;
+      color: #7a6344;
+      margin-top: 6px;
+      font-style: italic;
+    }
+
+    .scroll-body {
+      font-family: 'Noto Serif Bengali', serif;
+      font-size: 1.22rem;
+      line-height: 2.15;
+      text-align: justify;
+      color: #2b1f14;
+      position: relative;
+      z-index: 2;
+    }
+
+    .salutation {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #6b0f1a;
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .scroll-body p {
+      margin-bottom: 22px;
+      text-indent: 28px;
+    }
+
+    .scroll-footer {
+      text-align: right;
+      margin-top: 40px;
+      border-top: 1px solid rgba(184, 134, 40, 0.3);
+      padding-top: 20px;
+    }
+
+    .scroll-footer .sign {
+      font-family: 'Noto Serif Bengali', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #6b0f1a;
+    }
+
+    .action-panel {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .act-btn {
+      background: #6b0f1a;
+      color: #fff;
+      border: 1px solid var(--gold-primary);
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-family: 'Hind Siliguri', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(107, 15, 26, 0.4);
+      transition: all 0.3s;
+    }
+
+    .act-btn:hover {
+      background: #8b1422;
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 10px 25px rgba(230, 184, 0, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .parchment-scroll {
+        padding: 30px 20px;
+      }
+      .scroll-heading h1 {
+        font-size: 1.7rem;
+      }
+      .scroll-body {
+        font-size: 1.05rem;
+        line-height: 1.95;
+      }
+      .story-prompt h2 {
+        font-size: 1.2rem;
+      }
+      .flight-status-box {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dynamic Particle Atmosphere -->
+  <div class="sky-aura" id="skyAura"></div>
+  <canvas id="fxCanvas"></canvas>
+
+  <!-- Audio Toggle Switch -->
+  <div class="music-pill" id="audioBtn" onclick="toggleAudioEngine()">
+    <span>🎵</span> <span id="audioStatus">মিউজিক: চালু</span>
+  </div>
+
+  <!-- ==============================================================
+       ACT 1: THE CAGED SANCTUARY (INTERACTIVE UNLOCK)
+  ============================================================== -->
+  <div class="scene-view current" id="scene-1">
+    <div class="cinematic-badge">বিশ্ব চিঠি দিবস স্পেশাল</div>
+    
+    <div class="story-prompt" onclick="startCinematicJourney()">
+      <h2>✨ আপনার জন্য একটি গোপন বার্তা রয়েছে...</h2>
+      <p>কবুতরটিকে খাঁচা থেকে মুক্ত করতে স্পর্শ করুন 🕊️</p>
+    </div>
+
+    <div class="cage-enclosure" onclick="startCinematicJourney()">
+      <svg class="cage-model" viewBox="0 0 240 340">
+        <!-- Top Hanging Ring -->
+        <circle cx="120" cy="20" r="14" fill="none" stroke="url(#goldGrad)" stroke-width="4"/>
+        <line x1="120" y1="34" x2="120" y2="58" stroke="url(#goldGrad)" stroke-width="4"/>
+        
+        <defs>
+          <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fff2a3" />
+            <stop offset="50%" stop-color="#e6b800" />
+            <stop offset="100%" stop-color="#8c6d00" />
+          </linearGradient>
+        </defs>
+
+        <!-- Cage Roof Dome -->
+        <path d="M 30 130 C 30 45, 210 45, 210 130" fill="none" stroke="url(#goldGrad)" stroke-width="5"/>
+        
+        <!-- Bars -->
+        <line x1="55" y1="100" x2="55" y2="290" stroke="rgba(230, 184, 0, 0.45)" stroke-width="3"/>
+        <line x1="80" y1="80" x2="80" y2="290" stroke="rgba(230, 184, 0, 0.45)" stroke-width="3"/>
+        <line x1="160" y1="80" x2="160" y2="290" stroke="rgba(230, 184, 0, 0.45)" stroke-width="3"/>
+        <line x1="185" y1="100" x2="185" y2="290" stroke="rgba(230, 184, 0, 0.45)" stroke-width="3"/>
+        
+        <!-- Frame Base -->
+        <line x1="30" y1="130" x2="30" y2="290" stroke="url(#goldGrad)" stroke-width="5"/>
+        <line x1="210" y1="130" x2="210" y2="290" stroke="url(#goldGrad)" stroke-width="5"/>
+        <rect x="20" y="290" width="200" height="20" rx="8" fill="url(#goldGrad)"/>
+        <line x1="40" y1="230" x2="200" y2="230" stroke="#5a4200" stroke-width="6"/>
+
+        <!-- Animated Door -->
+        <g id="cageDoorGate" class="cage-door-hinge">
+          <rect x="92" y="125" width="56" height="165" fill="rgba(255, 230, 100, 0.08)" stroke="url(#goldGrad)" stroke-width="3" rx="4"/>
+          <line x1="120" y1="125" x2="120" y2="290" stroke="url(#goldGrad)" stroke-width="3"/>
+          <circle cx="140" cy="205" r="5" fill="#a81c24"/>
+        </g>
+      </svg>
+
+      <!-- Dove Inside Cage -->
+      <div class="captive-pigeon" id="captivePigeon">
+        <svg viewBox="0 0 140 110" width="100%">
+          <ellipse cx="60" cy="65" rx="34" ry="24" fill="#ffffff" filter="drop-shadow(0 0 8px rgba(255,255,255,0.7))"/>
+          <circle cx="98" cy="45" r="16" fill="#f8f9fa" />
+          <circle cx="105" cy="42" r="2.8" fill="#111" />
+          <g class="pigeon-idle-wing">
+            <path d="M 45 60 C 20 25, 65 15, 82 48 C 65 58, 55 65, 45 60 Z" fill="#e9ecef"/>
+          </g>
+          <polygon points="112,46 128,50 112,54" fill="#f39c12" />
+          
+          <!-- Mini Love Letter in Beak -->
+          <g transform="translate(116, 48) rotate(15)">
+            <rect width="20" height="13" fill="#fff" stroke="#a81c24" stroke-width="1.5" rx="2"/>
+            <line x1="0" y1="0" x2="10" y2="7" stroke="#a81c24" stroke-width="1.2"/>
+            <line x1="20" y1="0" x2="10" y2="7" stroke="#a81c24" stroke-width="1.2"/>
+            <circle cx="10" cy="6.5" r="2" fill="#a81c24"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================================
+       ACT 2: MAJESTIC SKY FLIGHT (EXTENDED PARALLAX EXPERIENCE)
+  ============================================================== -->
+  <div class="scene-view" id="scene-2">
+    <div class="flight-status-box">কবুতরটি মুক্তির ডানা মেলে আপনার ভালোবাসা নিয়ে আসছে... 🕊️✨</div>
+
+    <!-- Drifting Parallax Clouds -->
+    <div class="cloud-layer">
+      <svg class="cloud-svg c1" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="40"/>
+        <circle cx="70" cy="40" r="30"/>
+        <circle cx="30" cy="40" r="25"/>
+      </svg>
+      <svg class="cloud-svg c2" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45"/>
+        <circle cx="75" cy="45" r="35"/>
+        <circle cx="25" cy="45" r="30"/>
+      </svg>
+      <svg class="cloud-svg c3" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="35"/>
+        <circle cx="70" cy="45" r="25"/>
+      </svg>
+    </div>
+
+    <!-- Hero Flying Pigeon Soaring across the Sky -->
+    <div class="majestic-flying-dove" id="heroDove">
+      <svg viewBox="0 0 180 150" width="100%">
+        <!-- Body -->
+        <ellipse cx="80" cy="80" rx="46" ry="26" fill="#ffffff" filter="drop-shadow(0 0 15px rgba(255,255,255,0.95))"/>
+        <!-- Head -->
+        <circle cx="130" cy="58" r="19" fill="#ffffff" />
+        <circle cx="138" cy="54" r="3.2" fill="#000" />
+        <polygon points="146,57 168,62 146,67" fill="#f39c12" />
+        
+        <!-- Flapping Wings Layer -->
+        <g class="dove-wing-rapid">
+          <path d="M 55 75 C 5 -20, 100 -20, 125 60 Z" fill="#f1f2f6" stroke="#ced6e0" stroke-width="2"/>
+        </g>
+
+        <!-- Big Sealed Letter in Beak during flight -->
+        <g transform="translate(150, 60) rotate(18)">
+          <rect width="28" height="18" fill="#fdfaf3" stroke="#a81c24" stroke-width="2" rx="2"/>
+          <line x1="0" y1="0" x2="14" y2="10" stroke="#a81c24" stroke-width="1.5"/>
+          <line x1="28" y1="0" x2="14" y2="10" stroke="#a81c24" stroke-width="1.5"/>
+          <circle cx="14" cy="9" r="3.5" fill="#a81c24"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Letter Dropping from Sky -->
+    <div class="airdrop-letter-box" id="airdropLetter">
+      <svg viewBox="0 0 100 70" width="100%">
+        <rect width="100" height="70" rx="6" fill="#d8ad58" stroke="#fff2a3" stroke-width="2"/>
+        <polygon points="0,0 50,40 100,0" fill="#b88628" stroke="#fff2a3" stroke-width="1.5"/>
+        <circle cx="50" cy="38" r="11" fill="#a81c24"/>
+        <text x="50" y="42" font-size="10" fill="#fff" text-anchor="middle" font-family="sans-serif">❤️</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ==============================================================
+       ACT 3: 3D INTERACTIVE WAX SEAL ENVELOPE
+  ============================================================== -->
+  <div class="scene-view" id="scene-3">
+    <div class="envelope-3d-stage" onclick="crackWaxSealAndOpen()">
+      <div class="cinematic-badge" style="margin-bottom: 20px;">আপনার উদ্দেশ্যে প্রেরিত পত্র</div>
+      
+      <div class="royal-envelope" id="interactiveEnvelope">
+        <div class="royal-wax-seal">💌</div>
+        <div class="envelope-label">সিলমোহরে স্পর্শ করে চিঠিটি পড়ুন</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==============================================================
+       ACT 4: THE GRAND PARCHMENT LETTER (FINAL STAGE)
+  ============================================================== -->
+  <div class="scene-view" id="scene-4">
+    <div class="parchment-scroll" id="parchmentScroll">
+      <div class="vintage-watermark">🕊️</div>
+      
+      <div class="scroll-heading">
+        <h1>চিঠি দিবসের অনুভূতি 💌</h1>
+        <div class="sub-ornament">বিশ্ব চিঠি দিবস • একান্তই তোমার জন্য রচিত</div>
+      </div>
+
+      <div class="scroll-body">
+        <span class="salutation">প্রিয় প্রেয়সী,</span>
+        
+        <p>সাহিত্যে আমি বড়ই কাঁচা, তবুও এই চিঠি দিবসে তোমার জন্য কিছু একটা লেখার সাহস করাই যায়।</p>
+
+        <p>তোমার সাথে আমার পরিচয়টা হয়তো খুব বেশি দিনের না, কিন্তু এই অল্প সময়ের মধ্যেই তুমি আমার কাছে অনেকটা আপন হয়ে গেছ। তোমার সাথে কথা বলা, তোমার ছোট ছোট কথা শোনা, তোমার অভিমান, রাগ, হাসি—এসব কখন যে আমার প্রতিদিনের একটা অংশ হয়ে গেছে, বুঝতেই পারিনি।</p>
+
+        <p>আমি জানি, আমি সবসময় perfect না। হয়তো কখনো তোমাকে বুঝতে ভুল করি, কখনো এমন কিছু বলি যেটা তোমার ভালো লাগে না। কিন্তু একটা জিনিস সত্যি—তোমাকে নিয়ে আমার অনুভূতিটা মিথ্যা না। তোমাকে আমি সত্যিই অনেক আপন করে ফেলেছি।</p>
+
+        <p>তোমার সাথে আমার সবচেয়ে ভালো লাগার ব্যাপারটা হলো, তোমার সাথে কথা বললে নিজের মতো থাকতে পারি। কোনো কিছু সাজিয়ে বলতে হয় না। আর হয়তো এ কারণেই তোমার সাথে কথা বলার পর মনটা একটু ভালো হয়ে যায়।</p>
+
+        <p>আমি জানি না সামনে আমাদের গল্পটা কোথায় গিয়ে দাঁড়াবে। ভবিষ্যৎ নিয়ে বড় বড় প্রতিশ্রুতি দেওয়ার মতো মানুষ আমি হতে চাই না। শুধু এটুকু বলতে চাই—যতদিন আমরা একসাথে আছি, আমি চাই তোমাকে ভালোভাবে বুঝতে, তোমার পাশে থাকতে আর আমাদের সম্পর্কটাকে সুন্দর করে রাখতে।</p>
+
+        <div class="scroll-footer">
+          <div class="sign">— ইতি, তোমার আমি ❤️</div>
+        </div>
+      </div>
+
+      <div class="action-panel">
+        <button class="act-btn" onclick="burstLovePetals()">💖 ভালোবাসা প্রকাশ করুন</button>
+        <button class="act-btn" onclick="replayMasterpiece()" style="background:#5a4200;">🔄 পুনরায় দেখুন</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ==========================================================
+       1. ACOUSTIC WEB-AUDIO SYNTHESIZER (PIANO ENGINE)
+    ========================================================== */
+    let audioContext = null;
+    let isMusicActive = true;
+    let melodyTimer = null;
+
+    function initAudioEngine() {
+      if (!audioContext) {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+    }
+
+    function playPianoTone(freq, delay = 0, duration = 3.0) {
+      if (!audioContext || !isMusicActive) return;
+      try {
+        const osc = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, audioContext.currentTime + delay);
+
+        gainNode.gain.setValueAtTime(0.0001, audioContext.currentTime + delay);
+        gainNode.gain.exponentialRampToValueAtTime(0.12, audioContext.currentTime + delay + 0.08);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + delay + duration);
+
+        osc.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+
+        osc.start(audioContext.currentTime + delay);
+        osc.stop(audioContext.currentTime + delay + duration);
+      } catch (e) {}
+    }
+
+    function startRomanticSoundtrack() {
+      initAudioEngine();
+      const progression = [
+        [261.63, 329.63, 392.00, 493.88, 523.25], // Cmaj9
+        [220.00, 261.63, 329.63, 392.00, 440.00], // Am9
+        [174.61, 220.00, 261.63, 349.23, 440.00], // Fmaj7
+        [196.00, 246.94, 293.66, 392.00, 523.25]  // Gsus
+      ];
+      let chordIndex = 0;
+
+      function loopMelody() {
+        if (!isMusicActive) return;
+        const chord = progression[chordIndex % progression.length];
+        chord.forEach((note, i) => {
+          playPianoTone(note, i * 0.24, 3.8);
+        });
+        chordIndex++;
+      }
+
+      loopMelody();
+      if (melodyTimer) clearInterval(melodyTimer);
+      melodyTimer = setInterval(loopMelody, 3200);
+    }
+
+    function toggleAudioEngine() {
+      isMusicActive = !isMusicActive;
+      const statusEl = document.getElementById('audioStatus');
+      if (isMusicActive) {
+        statusEl.innerText = 'মিউজিক: চালু';
+        startRomanticSoundtrack();
+      } else {
+        statusEl.innerText = 'মিউজিক: বন্ধ';
+        if (melodyTimer) clearInterval(melodyTimer);
+      }
+    }
+
+    /* ==========================================================
+       2. CANVAS SYSTEM: STARS, FIREFLIES & 3D PETALS
+    ========================================================== */
+    const canvas = document.getElementById('fxCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+    let particleMode = 'night';
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class MagicalParticle {
+      constructor(mode) {
+        this.reset(mode);
+      }
+      reset(mode) {
+        this.mode = mode;
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = mode === 'rose-storm' ? Math.random() * 14 + 8 : Math.random() * 3 + 1;
+        this.speedX = mode === 'rose-storm' ? (Math.random() - 0.5) * 2 : (Math.random() - 0.5) * 0.8;
+        this.speedY = mode === 'rose-storm' ? Math.random() * 2.2 + 1.2 : (Math.random() - 0.5) * 0.8;
+        this.opacity = Math.random() * 0.8 + 0.2;
+        this.angle = Math.random() * 360;
+        this.angularSpeed = (Math.random() - 0.5) * 2.5;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.angle += this.angularSpeed;
+
+        if (this.mode === 'rose-storm') {
+          if (this.y > height + 20) this.y = -20;
+          if (this.x > width + 20) this.x = -20;
+        } else {
+          if (this.x < 0 || this.x > width) this.speedX *= -1;
+          if (this.y < 0 || this.y > height) this.speedY *= -1;
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate((this.angle * Math.PI) / 180);
+        ctx.globalAlpha = this.opacity;
+
+        if (this.mode === 'rose-storm') {
+          const grad = ctx.createLinearGradient(-this.size, -this.size, this.size, this.size);
+          grad.addColorStop(0, '#ff4d6d');
+          grad.addColorStop(1, '#a81c24');
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.ellipse(0, 0, this.size, this.size * 1.5, 0, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          ctx.fillStyle = this.mode === 'sunset' ? '#fff2a3' : '#ffd700';
+          ctx.shadowBlur = 12;
+          ctx.shadowColor = '#fff2a3';
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+    }
+
+    function initParticleSystem(mode) {
+      particleMode = mode;
+      particles = [];
+      const count = mode === 'rose-storm' ? 55 : 80;
+      for (let i = 0; i < count; i++) {
+        particles.push(new MagicalParticle(mode));
+      }
+    }
+    initParticleSystem('night');
+
+    function renderParticles() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(renderParticles);
+    }
+    renderParticles();
+
+    /* ==========================================================
+       3. CINEMATIC TIMELINE CONTROLLER
+    ========================================================= */
+    function transitionScene(activeId, targetId) {
+      const activeEl = document.getElementById(activeId);
+      const targetEl = document.getElementById(targetId);
+
+      activeEl.classList.remove('current');
+      setTimeout(() => {
+        targetEl.classList.add('current');
+      }, 700);
+    }
+
+    // Step 1: Release Pigeon from Cage
+    function startCinematicJourney() {
+      initAudioEngine();
+      startRomanticSoundtrack();
+
+      // 1. Open cage door
+      document.getElementById('cageDoorGate').classList.add('unlocked');
+
+      // 2. Animate pigeon taking off from cage
+      const dove = document.getElementById('captivePigeon');
+      dove.style.transform = 'translate(60px, -70px) scale(0.6) rotate(20deg)';
+      dove.style.opacity = '0';
+
+      // 3. Transition to Long Sky Flight Scene (Scene 2)
+      setTimeout(() => {
+        // Change sky to sunset atmosphere
+        document.getElementById('skyAura').style.background = 'radial-gradient(circle at 50% 60%, #b23b4e 0%, #4a1942 50%, #0d0e1a 100%)';
+        transitionScene('scene-1', 'scene-2');
+        initParticleSystem('sunset');
+
+        // 4. Pigeon swoops close and drops the letter at 6.0 seconds
+        setTimeout(() => {
+          document.getElementById('airdropLetter').classList.add('released');
+        }, 5800);
+
+        // 5. Move to 3D Wax Seal Envelope Stage (Scene 3) after 8.5 seconds
+        setTimeout(() => {
+          document.getElementById('skyAura').style.background = 'radial-gradient(circle at 50% 50%, #2c1a35 0%, #0c0814 100%)';
+          transitionScene('scene-2', 'scene-3');
+          initParticleSystem('rose-storm');
+        }, 8500);
+
+      }, 1000);
+    }
+
+    // Step 2: Break Wax Seal & Unveil Parchment
+    function crackWaxSealAndOpen() {
+      const envelope = document.getElementById('interactiveEnvelope');
+      envelope.style.transform = 'scale(0.8) rotateX(45deg)';
+      envelope.style.opacity = '0';
+
+      setTimeout(() => {
+        transitionScene('scene-3', 'scene-4');
+        setTimeout(() => {
+          document.getElementById('parchmentScroll').classList.add('opened');
+        }, 300);
+      }, 700);
+    }
+
+    // Interactive Heart Burst
+    function burstLovePetals() {
+      for (let i = 0; i < 40; i++) {
+        const p = new MagicalParticle('rose-storm');
+        p.x = width / 2;
+        p.y = height / 2;
+        p.speedX = (Math.random() - 0.5) * 8;
+        p.speedY = (Math.random() - 0.5) * 8;
+        particles.push(p);
+      }
+      playPianoTone(523.25, 0, 2);
+      playPianoTone(659.25, 0.15, 2.5);
+    }
+
+    // Replay Entire Story
+    function replayMasterpiece() {
+      document.getElementById('parchmentScroll').classList.remove('opened');
+      const envelope = document.getElementById('interactiveEnvelope');
+      envelope.style.opacity = '1';
+      envelope.style.transform = 'none';
+
+      document.getElementById('cageDoorGate').classList.remove('unlocked');
+      const dove = document.getElementById('captivePigeon');
+      dove.style.opacity = '1';
+      dove.style.transform = 'none';
+
+      document.getElementById('airdropLetter').classList.remove('released');
+
+      document.getElementById('skyAura').style.background = 'radial-gradient(circle at 50% 50%, #151833 0%, #05060e 100%)';
+      initParticleSystem('night');
+
+      transitionScene('scene-4', 'scene-1');
+    }
+  </script>
+</body>
+</html>
